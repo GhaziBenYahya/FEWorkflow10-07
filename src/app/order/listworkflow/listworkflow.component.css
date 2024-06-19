@@ -106,7 +106,7 @@
   
   
   .view-button {
-    background-color: rgb(89, 167, 206); 
+    background-color: #007bff; 
     color: white;
   }
   
@@ -157,7 +157,7 @@
   }
 
   .nav-link{
-    background-color: #72a5e8;
+    background-color: #007bff;
     color: white;
     display: flex;
     gap: 5px;
@@ -204,3 +204,33 @@ table {
 
 
   
+
+
+
+
+
+
+/* list-workflow.component.css */
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  margin-top: 10px;
+}
+
+.search-container input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

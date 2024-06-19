@@ -28,26 +28,41 @@ export class WorkflowListComponent implements OnInit{
 role :RoleEX = new RoleEX(0,'','','');
 Workflow: Workflow[] = [];
 numRole: number = 1;
+
+filteredWorkflows: any[] = [];
+searchTerm: string = '';
 ngOnInit(): void {
   const token = this.tokenService.getToken();
   const accessrole = this.tokenService.getRole();
+  const userName = this.tokenService.getUserName();
   //this.role.name=accessrole
   //const numRole: number = 1;
   console.log('le token de listWorkflow =', token)
   console.log('le Role de listWorkflow =', accessrole)
+  console.log('le UserName de profil =', userName)
+
   console.log('succes')
 /*     const token = this.tokenService.getToken();
   console.log('le token de execute est la :'+ token) */
   this.srvRole.getAllworkflowByRole(this.numRole).subscribe((res: any) => {
 
     console.log(res)
-    this.Workflow = res
+    this.Workflow = res.filter((workflow: { status: string; }) => workflow.status === 'false');
+    this.filteredWorkflows = this.Workflow
+  
   
    })
 
-
-
 }
+
+filterWorkflows(): void {
+  this.filteredWorkflows = this.Workflow.filter(workflow => 
+    workflow.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+  );
+}
+
+
+
 
 onPageChange(event: any): void {
   this.pageIndex = event.pageIndex + 1;

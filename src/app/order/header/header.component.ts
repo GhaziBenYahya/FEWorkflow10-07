@@ -33,4 +33,9 @@ export class HeaderComponent {
       
     });
   }
+
+  profil(){
+    console.log("hello profil")
+    this.router.navigate(['/mfe1/orderComponent/profil']);
+  }
 }

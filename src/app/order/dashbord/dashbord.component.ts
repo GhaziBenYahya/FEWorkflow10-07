@@ -1,57 +1,202 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { ServiceService } from '../service.service';
+import { Router } from '@angular/router';
+import { WorkflowDto } from 'src/app/common/models/workflow-dto';
+import { WorkflowExecution } from '../executor/models/workflow-execute';
 @Component({
     selector: 'app-dashbord',
     templateUrl: './dashbord.component.html',
     styleUrls: ['./dashbord.component.css']
 })
-export class DashbordComponent {
+export class DashbordComponent implements OnInit {
   
   doughnutChart: any;
   barChart: any;
+/*************************************************************************************************************** */
 
-  ngOnInit(): void {
-    ///count by status 
-    this.doughnutChart = new Chart('doughnutCanvas', {
-      type: 'doughnut',
-      data: {
-        labels: ['Terminé', 'En cours', 'En attente'],
-        datasets: [{
-          data: [30, 40, 30],
-          backgroundColor: ['#5271FF', '#66E199', '#EE760F']
-        }]
-      },
-      options: {
-        responsive: true
-      }
-    });
 
-    // Graphique à barres animé
-    this.barChart = new Chart('barCanvas', {
-      type: 'bar',
-      data: {
-        labels: ['Workflow A', 'Workflow B', 'Workflow C', 'Workflow D'],
-        datasets: [{
-          label: 'Bar Chart',
-          data: [10, 20, 30, 40],
-          backgroundColor: '#00CADC', 
-          borderColor: 'rgba(75, 192, 192, 1)', 
-          borderWidth: 1 
-        }]
-      },
-      options: {
-        responsive: true,
-        animation: {
-          duration: 2000, // Durée de l'animation en millisecondes
-          easing: 'easeOutQuart' // Fonction d'assouplissement de l'animation
-        },
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+nbWorkflow:any=0;
+WorkflowDto: WorkflowDto[] = [];
+nbUser:any=0;
+users:any[]=[]
+nbWorkflowEx:any=0;
+workflowEx:WorkflowExecution[]=[]
+nbWorkflowNoEx:any=0;
+
+constructor(private srv: ServiceService , private router: Router) {}
+
+
+ngOnInit(): void {
+  
+
+  // Nombre total des workflows
+  this.srv.getWorkflows().subscribe((res: any) => {
+    console.log(res)
+    this.WorkflowDto = res.filter((workflow: { status: string; }) => workflow.status === 'false');
+    this.nbWorkflow = this.WorkflowDto.length;
+
+
+            // Nombre de workflows exécutés
+            this.srv.getAllWorkflowEx().subscribe((res: any) => {
+              console.log(res)
+              this.workflowEx = res
+
+
+              //Nombre de workflows executes et non exécutés
+                for(let i=0;i<this.WorkflowDto.length;i++){
+
+                  const existe = this.workflowEx.some(objet => objet.id === this.WorkflowDto[i].id);
+                  if(existe){
+                    this.nbWorkflowEx = this.nbWorkflowEx + 1;
+
+                  }
+
+                }
+                this.nbWorkflowNoEx = this.nbWorkflow - this.nbWorkflowEx
+                //graphe 1
+                let ex = this.nbWorkflowEx;
+                let noEx = this.nbWorkflowNoEx;
+
+                console.log("ex:",ex)
+
+                console.log("noEx:",noEx)
+              
+                
+                ///count by status 
+                this.doughnutChart = new Chart('doughnutCanvas', {
+                  type: 'doughnut',
+                  data: {
+                    labels: ['non exécutés',  'exécutés'],
+                    datasets: [{
+                      data: [noEx, ex],
+                      backgroundColor: ['#5271FF', '#66E199']
+                    }]
+                  },
+                  options: {
+                    responsive: true
+                  }
+                });
+
+
+
+
+
+
+                //graphe2
+
+                  // get all workflow existe
+                for(let i=0;i<this.WorkflowDto.length;i++){
+                  this.WorkflowDto[i].nbExecution = 0;
+                  for(let j=0;j<this.workflowEx.length;j++){
+                    if(this.WorkflowDto[i].id == this.workflowEx[j].workflow.id){
+                      this.WorkflowDto[i].nbExecution =  this.WorkflowDto[i].nbExecution +1; 
+                    }
+
+                  }
+                }
+                let namesWorkflow: string[]=[];
+                let nbExecution:number[]=[];
+                for(let i=0;i<this.WorkflowDto.length;i++){
+                  namesWorkflow.push(this.WorkflowDto[i].name)
+                  nbExecution.push(this.WorkflowDto[i].nbExecution)
+                }
+                console.log("names workflow :",namesWorkflow)
+                console.log("nbEx workflow :",nbExecution)
+
+
+
+
+                 // Graphique à barres animé 
+                this.barChart = new Chart('barCanvas', {
+                  type: 'bar',
+                  data: {
+                    labels: namesWorkflow,
+                    datasets: [{
+                      label: 'Nombre d\'exécutions par workflow',
+                      data: nbExecution,
+                      backgroundColor: '#4e73df', 
+                      borderColor: '#4e73df', 
+                      borderWidth: 1
+                    }]
+                  },
+                  options: {
+                    responsive: true,
+                    animation: {
+                      duration: 2000, // Durée de l'animation en millisecondes
+                      easing: 'easeOutQuart' // Fonction d'assouplissement de l'animation
+                    },
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                        ticks: {
+                          stepSize: 1 // Intervalle des graduations de l'axe Y à 1
+                        }
+                      }
+                    }
+                  }
+                });
+
+
+
+
+
+
+
+
+
+                      
+
+                  
+                    })
+
+  })
+
+
+
+
+
+
+        
+
+
+            // Nombre total des Utilisateurs
+            this.srv.getAllUsers().subscribe((res: any) => {
+              console.log(res)
+              this.users = res
+              this.nbUser = this.users.length;
+          
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /********************************************************************************************************** */
+
+
+
+
+
   }
+
+
+
+  
+
 
 }

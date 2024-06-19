@@ -6,6 +6,7 @@ export class StepDto1 {
    name: string;
    description: string;
    creationDate: string;
+   status: string;
    exitRulesIds: any[];
    entryRulesId: any[];
    role: Role;
@@ -16,7 +17,7 @@ export class StepDto1 {
    end_date: any;
    step_type : any;
  
-   constructor(end_date: any,start_date: any,state: any, step_type:any, id: number, name: string, description: string, creationDate: string, exitRulesIds: any[], entryRulesId: any[], role: Role, workflow: WorkflowDto, rank: number) 
+   constructor(end_date: any,start_date: any,state: string, step_type:any, id: number, name: string, description: string, creationDate: string, exitRulesIds: any[], entryRulesId: any[], role: Role, workflow: WorkflowDto, rank: number) 
    {
        this.id = id;
        this.name = name;

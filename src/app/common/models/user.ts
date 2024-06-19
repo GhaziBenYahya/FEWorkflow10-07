@@ -1,3 +1,5 @@
+import { Role } from "./role";
+
 export class User {
   id : any;
   username: string;
@@ -9,11 +11,7 @@ export class User {
   dateInscription: Date;
   enabled: boolean;
   status: boolean;
-  roles: { id: number; 
-          name: string,
-          description: string,
-          status: boolean
-  }[] = [];
+  roles: Role[] = [];
 
   constructor(
     id :any,

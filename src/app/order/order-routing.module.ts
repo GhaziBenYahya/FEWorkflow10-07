@@ -16,6 +16,8 @@ import { WorkflowListComponent } from './executor/workflow-list/workflow-list.co
 import { WorkflowExecuteComponent } from './executor/workflow-execute/workflow-execute.component';
 import { DescriptionComponent } from './executor/description/description.component';
 import { ExecutionDetailsComponent } from './executor/execution-details/execution-details.component';
+import { ProfilComponent } from './profil/profil.component';
+import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
 // import { ExecutorComponent } from './executor/executor.component';
 // import { WorkflowListComponent } from './executor/workflow-list/workflow-list.component';
 // import { WorkflowExecuteComponent } from './executor/workflow-execute/workflow-execute.component';
@@ -51,6 +53,13 @@ const orderRoutes: Routes = [
           {
             path: 'dashbordComponent',
             component: DashbordComponent
+          },
+          {
+            path: 'profil',
+            component: ProfilComponent
+          },          {
+            path: 'updateProfil',
+            component: UpdateProfilComponent
           },
           {
             path: 'addworkflowComponent',

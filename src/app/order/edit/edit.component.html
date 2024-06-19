@@ -17,23 +17,19 @@
     
       
 
-    <div class="form-group" >
-      <label for="roles">Rôles</label>
-
-      <div class="roles-container" >
+      <div class="form-group">
+        <label for="roles">Rôles :</label>
+      
+        <div class="roles-container">
           <div class="role-checkbox" *ngFor="let role of roles">
-              <ng-container *ngIf="!role.status ">
-                <input type="checkbox"
-                 id="{{role.id}}"
-                 name="roles"
-                 (change)="handleRoleChange($event, role)"
-                 [checked]="role.name === checkedRole"
-                 >
-                <label for="{{role.id}}">{{role.name}}</label>
-              </ng-container>
+            <ng-container *ngIf="!role.status">
+              <input type="checkbox" id="{{role.id}}" name="roles" (change)="handleRoleChange($event, role)"
+              [checked]="isRoleSelected(role)">
+              <label for="{{role.id}}">{{role.name}}</label>
+            </ng-container>
           </div>
+        </div>
       </div>
-    </div>
 
 </form>
 </div>

@@ -20,6 +20,10 @@
             
           </button>
          </div>
+
+         <div class="search-container">
+          <input type="text" [(ngModel)]="searchTerm" (input)="filterWorkflows()" placeholder="Rechercher un workflow">
+        </div>
   
           <table *ngIf="listWorkflowEx.length>0" >
             <thead>
@@ -33,7 +37,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let workflowEx of listWorkflowEx | slice: (pageIndex - 1) * pageSize : pageIndex * pageSize, let i = index">
+              <tr *ngFor="let workflowEx of filteredWorkflows | slice: (pageIndex - 1) * pageSize : pageIndex * pageSize, let i = index">
                 <td class="col-nom">{{ workflowEx.description }}</td>
                 <td class="col-nom">{{ workflowEx.start_date }}</td>
                 <td class="col-nom" >{{ workflowEx.end_date }}</td>

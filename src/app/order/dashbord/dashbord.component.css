@@ -17,7 +17,7 @@ body {
   }
 
   .box, .grid-box {
-    width: 250px;
+    width: 300px;
     height: 100px;
     background-color: white;
     border-radius: 20px;
@@ -80,10 +80,12 @@ body {
     display: flex;
     grid-template-columns: 4fr 6fr 2fr;
     gap: 10px; /* Espacement entre les colonnes de la grille */
-    margin: 20px;
+    margin-left: 20%;
+    margin-bottom: 60px;
   }
 
 p{
+    font-size: 25px;
     color: orange;
 }
 

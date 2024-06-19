@@ -116,8 +116,10 @@ export class StepsComponent  implements OnInit{
     id:'',
     name: "",
     description: "",
+    status:"false",
     role:[],
     creationDate: '',
+    nbExecution:0,
     steps: [],
     //workflowId: number;
   };
@@ -210,21 +212,24 @@ numRole :number = 1;
       cancelButtonText: 'Annuler'
     }).then((result) => {
       if (result.isConfirmed) {
-        if(this.idStep){
-          this.srvStep.deleteStepFromWorkflow(this.idStep)
-          .subscribe(
-            (result) => { 
-              console.log(result);
-              Swal.fire('Step supprimé avec succès', '', 'success');
-              window.location.reload();
-            },
-            (err) => {
-              console.log(err);
-              Swal.fire('Step supprimé avec succès', '', 'success');
-              window.location.reload();
-            }
-          );
-      }
+        
+
+                    this.AddStep.status = 'true'
+              this.srvStep.editStepOfWorkflow(this.AddStep.id, this.AddStep)
+              .subscribe(
+                (result) => { 
+
+                Swal.fire('Valider', '', 'success')
+                window.location.reload();
+              
+              },
+              (err) => {
+                console.log(err)
+                Swal.fire('Invalid ', '', 'error')
+              }
+              )
+
+      
         }
          else {
         Swal.fire('Suppression annulée', '', 'info');
@@ -313,7 +318,7 @@ numRole :number = 1;
 
   showStepInfoNoCreated:boolean=false
 // pour ajouter un step
-AddStep : Step = new Step(0,'','','',[],[],[],this.workflow,0);
+AddStep : Step = new Step(0,'','','false','',[],[],[],this.workflow,0);
 ShowStepInfoClickToAddStep(){
   console.log("methode il est bien")
   
@@ -334,7 +339,7 @@ this.showStepInfo=false;
  }
 
  ShowButtonAddRule:boolean=false;
-AddNewStep:Step= new Step(0,'','','',[],[],[],this.workflow,0);
+AddNewStep:Step= new Step(0,'','','false','',[],[],[],this.workflow,0);
 rankStep:number=0;
  addStepsToWorkflow(): void {
   this.AddStep.role = this.checkedRoles
@@ -344,6 +349,7 @@ rankStep:number=0;
   this.AddNewStep.role.push(1);
   this.rankStep = this.create.length;
   this.AddNewStep.rank=this.create.length;
+  this.AddNewStep.status ='false';
     this.srvStep.addStepsToWorkflow(this.AddNewStep, this.workflowId)
         .subscribe(
           (result :any) => { 
@@ -470,12 +476,33 @@ listRule:Rule[]=[]
 
   editStepOfWorkflow(): void {
     this.AddStep.role = this.checkedRoles
-    console.log(this.AddStep);
-    this.srvStep.editStepOfWorkflow(this.idStep, this.AddStep)
+    console.log(this.AddStep , this.AddStep.id);
+    this.srvStep.editStepOfWorkflow(this.AddStep.id, this.AddStep)
     .subscribe(
       (result) => { 
 
       Swal.fire('Valider', '', 'success')
+      window.location.reload();
+     
+     },
+    (err) => {
+      console.log(err)
+      Swal.fire('Invalid ', '', 'error')
+    }
+    )
+  }
+
+
+  deleteStep2(): void {
+    this.AddStep.status = 'true'
+    console.log(this.AddStep , this.AddStep.id);
+    this.srvStep.editStepOfWorkflow(this.AddStep.id, this.AddStep)
+    .subscribe(
+      (result) => { 
+
+      Swal.fire('Valider', '', 'success')
+      window.location.reload();
+     
      },
     (err) => {
       console.log(err)

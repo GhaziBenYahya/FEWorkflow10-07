@@ -12,4 +12,9 @@ export class TokenService {
     // Récupérer le jeton à partir du localStorage
     return localStorage.getItem('role');
   }
+
+  getUserName(): string | null {
+    // Récupérer le User à partir du localStorage
+    return localStorage.getItem('userName');
+  }
 }

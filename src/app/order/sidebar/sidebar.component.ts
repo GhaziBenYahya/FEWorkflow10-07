@@ -20,7 +20,6 @@ constructor(private router: Router) {}
   ListUsers(){
     this.router.navigate(['/mfe1/orderComponent/mfe-user/homeComponent/userListComponent']);
 
-
   }
 
   ListRoles(){

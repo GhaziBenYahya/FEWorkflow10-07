@@ -21,6 +21,8 @@ export class ExecutionDetailsComponent implements OnInit {
   listWorkflowEx:WorkflowExecution[]=[];
 
 
+  filteredWorkflows: any[] = [];
+  searchTerm: string = '';
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -36,7 +38,10 @@ export class ExecutionDetailsComponent implements OnInit {
           // getWorkflowExsByIdWorkflow pour le tableau de historique 
           this.srv.getWorkflowExsByIdWorkflow(this.workflowId).subscribe((res: any) => {
             this.listWorkflowEx=res;
-            console.log("haw tableau:",this.listWorkflowEx)
+            this.filteredWorkflows = this.listWorkflowEx
+          
+
+            //console.log("haw tableau:",this.listWorkflowEx)
           });
 
 
@@ -60,6 +65,13 @@ export class ExecutionDetailsComponent implements OnInit {
             steps:[],
             stepCount: 0 
           }
+  }
+
+
+  filterWorkflows(): void {
+    this.filteredWorkflows = this.listWorkflowEx.filter(workflow => 
+      workflow.description.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 
    /**************Si ona nouvelle execution***************** */

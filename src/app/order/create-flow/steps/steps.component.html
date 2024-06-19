@@ -44,12 +44,12 @@
         [ngStyle]="positions[item.id] ? {'transform': 'translate3d(' + (positions[item.id].x) + 'px, ' + (positions[item.id].y) + 'px, 0)'} : {}">
 <!---------------------------------------------------->
       
-        <div class="other-item" (click)="ShowStepInfoClick(item.id)">
+        <div class="other-item"  *ngIf='item.status != "true"' (click)="ShowStepInfoClick(item.id)">
           {{ item.name }} 
         </div>
       
 <!---------------------------------------------------->
-        <div *ngIf="testStep(item)" style="display: flex; flex-direction: column; align-items: center; height: 10px;">
+        <div *ngIf="testStep(item)"  style="display: flex; flex-direction: column; align-items: center; height: 10px;">
   
           <div>
             <app-branch branch_Type="step"></app-branch>

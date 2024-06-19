@@ -36,7 +36,7 @@ export class ServiceService {
    }
 
    removeWorkflow (id: any ){
-    return this.http.delete(this.url+'/'+id)
+    return this.http.delete(this.url+'/withStep/'+id)
   }
 
 
@@ -173,6 +173,9 @@ addRole (role:Role){
   return this.http.get(this.url2+'/roles/'+id)
 
  }
+ getRoleById(roleId:any){
+  return this.http.get(this.url2+'/roles/'+roleId)
+}
 
 
 
@@ -189,13 +192,18 @@ editRole(role:Role , roleId:any ){
 
 
 addUser (user:User){
-  return this.http.post(this.url+'/users/create',user) 
+  return this.http.post(this.url2+'/users/create',user) 
  }
 
  getAllUsers(){
-  return this.http.get(this.url+'/users/')
+  return this.http.get(this.url2+'/users/')
 
  }
+
+ getUserByUserName(userName: string){
+  const urluser = `${this.url2}/users/find?username=${userName}`;
+  return this.http.get<any>(urluser, {});
+}
 
  deleteUser (userId: any ){
   return this.http.delete(this.url+'/users/'+userId)
@@ -206,9 +214,7 @@ editUser(user:User){
  }
 
 
- getRoleById(userId:any){
-  return this.http.get(this.url+'/'+userId)
-}
+
 
 // //APIRole
 //  // API pour récupérer tous les workflows par rôle
@@ -319,6 +325,27 @@ return this.http.get(this.urlExRule + '/rules/ObjectsByIdRule/' + ruleId);
    
 // Votre URL de base pour les API
 private urlExRule = 'http://localhost:7081/api/rule';
+
+
+
+//API Dashbord
+
+   //Get All Workflow
+      // getWorkflows()
+
+   //Get All User
+      // getAllUsers()
+
+   //Get All Workflow Executed
+    getAllWorkflowEx() {
+      return this.http.get(this.urlEx + '/workflow/workflowExs');
+    }
+
+
+   //chaque workflow il execute combient de foix
+      //getWorkflowExsByIdWorkflow
+
+
 
 
 

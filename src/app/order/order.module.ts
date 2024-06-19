@@ -30,6 +30,9 @@ import { WorkflowListComponent } from './executor/workflow-list/workflow-list.co
 import { WorkflowExecuteComponent } from './executor/workflow-execute/workflow-execute.component';
 import { DescriptionComponent } from './executor/description/description.component';
 import { ExecutionDetailsComponent } from './executor/execution-details/execution-details.component';
+import { ListRoleComponent } from './list-role/list-role.component';
+import { ProfilComponent } from './profil/profil.component';
+import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
 // import { AddBranchComponent } from './create-flow/add-branch/add-branch.component';
 // import { DescriptionComponent } from './executor/description/description.component';
 // import { ExecutorComponent } from './executor/executor.component';
@@ -57,6 +60,9 @@ import { ExecutionDetailsComponent } from './executor/execution-details/executio
     WorkflowExecuteComponent,
     DescriptionComponent,
     ExecutionDetailsComponent,
+    ListRoleComponent,
+    ProfilComponent,
+    UpdateProfilComponent,
     // AddBranchComponent,
     // ExecutorComponent,
     // WorkflowListComponent,
@@ -77,6 +83,8 @@ import { ExecutionDetailsComponent } from './executor/execution-details/executio
     DiagramModule,
     MatDialogModule,
     MatPaginatorModule
+    
+
     
 
 
