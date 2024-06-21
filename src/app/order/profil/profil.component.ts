@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TokenService } from '../TokenService';
 import { User } from 'src/app/common/models/user';
 import { Role } from 'src/app/common/models/role';
+import { UpdateProfilComponent } from './update-profil/update-profil.component';
 
 @Component({
   selector: 'app-profil',
@@ -35,6 +36,23 @@ export class ProfilComponent implements OnInit{
     }) 
   }
     
+
+
+ //************************************************************Edit User********************************************************** */
+openEditObjetDialog(user:any): void {
+  const dialogRef = this.dialog.open(UpdateProfilComponent, {
+    width: '500px', // Largeur de la boîte de dialogue
+    data: { user } // Passer les données au composant edit-objet
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('Boîte de dialogue fermée'); // Logique à exécuter après la fermeture de la boîte de dialogue
+  });
+}
+
+
+
+//*************************************************************Fin Edit User************************************************************** */
 
 
 }

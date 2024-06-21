@@ -35,25 +35,43 @@ ngOnInit(): void {
     console.log(res)
     this.WorkflowDto = res.filter((workflow: { status: string; }) => workflow.status === 'false');
     this.nbWorkflow = this.WorkflowDto.length;
+    console.log("le workflow aaaaaaaa:",this.WorkflowDto)
+
 
 
             // Nombre de workflows exécutés
             this.srv.getAllWorkflowEx().subscribe((res: any) => {
               console.log(res)
               this.workflowEx = res
+              console.log("le workflow Ex bbbbbbbbb:",this.workflowEx)
+
+              
 
 
               //Nombre de workflows executes et non exécutés
                 for(let i=0;i<this.WorkflowDto.length;i++){
+                  for(let j=0;j<this.workflowEx.length;j++){
+                    if(this.WorkflowDto[i].id == this.workflowEx[j].workflow.id){
+                      this.nbWorkflowEx = this.nbWorkflowEx + 1;
+                      break
+                    }
 
-                  const existe = this.workflowEx.some(objet => objet.id === this.WorkflowDto[i].id);
-                  if(existe){
-                    this.nbWorkflowEx = this.nbWorkflowEx + 1;
 
                   }
 
+/*                   const existe = this.workflowEx.some(objet => objet.id === this.WorkflowDto[i].id);
+                  if(existe){
+                    this.nbWorkflowEx = this.nbWorkflowEx + 1;
+
+                  } */
+
                 }
+                console.log("le workflow Excccc:",this.nbWorkflowEx)
                 this.nbWorkflowNoEx = this.nbWorkflow - this.nbWorkflowEx
+                if(this.nbWorkflowNoEx < 0){
+                  this.nbWorkflowNoEx =0
+
+                }
                 //graphe 1
                 let ex = this.nbWorkflowEx;
                 let noEx = this.nbWorkflowNoEx;

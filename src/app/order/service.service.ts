@@ -210,7 +210,7 @@ addUser (user:User){
 }
 
 editUser(user:User){
-  return this.http.post(this.url+'/users/update',user) 
+  return this.http.post(this.url2+'/users/update',user) 
  }
 
 

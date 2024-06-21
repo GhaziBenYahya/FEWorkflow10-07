@@ -41,7 +41,8 @@
                 <td class="col-nom">{{ workflowEx.description }}</td>
                 <td class="col-nom">{{ workflowEx.start_date }}</td>
                 <td class="col-nom" >{{ workflowEx.end_date }}</td>
-                <td class="col-nom">{{ workflowEx.state }}</td>
+                <td class="col-nom" *ngIf="workflowEx.state == 'terminer'">Terminé</td>
+                
 
                 
 

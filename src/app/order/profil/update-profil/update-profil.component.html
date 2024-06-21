@@ -1,1 +1,23 @@
-<p>update-profil works!</p>
+<div class="dialog-container">
+    <div class="dialog-content">
+      <h2 class="dialog-title">Modifier Profile</h2>
+  
+      <div class="input-field">
+        <input type="file" id="profileImage" (change)="onImageChange($event)" />
+        <img *ngIf="newUser.docProfileId" [src]="newUser.docProfileId" alt="Profile Image" class="profile-preview" />
+      </div>
+  
+      <div class="input-field">
+        <input type="text" id="firstname" name="firstname" [(ngModel)]="newUser.firstname" required placeholder="Nom :">
+      </div>
+      <div class="input-field">
+        <input type="text" id="lastname" name="lastname" [(ngModel)]="newUser.lastname" required placeholder="Prénom :">
+      </div>
+  
+      <div class="buttons-container">
+        <button class="save-button" mat-button (click)="onSaveClick()">Enregistrer</button>
+        <button class="cancel-button" mat-button (click)="onCancelClick()">Annuler</button>
+      </div>
+    </div>
+  </div>
+  

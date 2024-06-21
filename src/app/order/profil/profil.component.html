@@ -1,7 +1,7 @@
 <div class="profile-container">
     <div class="profile-card">
       <div class="profile-header">
-        <img src="assets/user1.png" alt="User Image" class="profile-image">
+        <img src="{{user.docProfileId}}" alt="User Image" class="profile-image">
         <h2 class="profile-name">{{user.firstname}} {{user.lastname}}</h2>
         <h3 class="profile-username">{{user.username}}</h3>
       </div>
@@ -10,7 +10,7 @@
         <p><strong>Rôles:</strong> <p *ngFor="let role of roles2">{{role.name}}</p>
       </div>
       <div class="profile-footer">
-        <button class="btn edit-btn">Edit</button>
+        <button class="btn edit-btn" (click)="openEditObjetDialog(user)" >Edit</button>
         <button class="btn change-password-btn" >Change Password</button>
       </div>
     </div>

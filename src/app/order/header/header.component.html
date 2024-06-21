@@ -9,7 +9,7 @@
       
 
           <div>
-            <img  class="icon-profile"  src="assets/user1.png" (click)="showPopdownProfile()"alt="profile"/>  
+            <img  class="icon-profile"  src="{{user.docProfileId}}" (click)="showPopdownProfile()"alt="profile"/>  
           </div> 
           <div class="dropDownMenu" *ngIf="popDownProfile">
             <a class="dropDownMenu-item" (click)="profil()">
