@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../../service.service';
+import { StepExecution } from '../../executor/models/step-execute';
+import { StepEx } from '../../executor/models/stepEx';
+import { Rule } from '../../executor/models/rule';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ServiceService } from '../../service.service';
+import { Objet, RuleObjet } from '../../executor/models/ruleObjet';
 import Swal from 'sweetalert2';
-import { StepEx } from '../models/stepEx';
-import { StepExecution} from '../models/step-execute';
-import { Rule } from '../models/rule';
-import { Objet, RuleObjet } from '../models/ruleObjet';
-import { WorkflowExecution } from '../models/workflow-execute';
+import { WorkflowExecution } from '../../executor/models/workflow-execute';
 
 @Component({
-  selector: 'app-workflow-execute',
-  templateUrl: './workflow-execute.component.html',
-  styleUrls: ['./workflow-execute.component.css']
+  selector: 'app-execution',
+  templateUrl: './execution.component.html',
+  styleUrls: ['./execution.component.css']
 })
-export class WorkflowExecuteComponent implements OnInit{
+export class ExecutionComponent implements OnInit{
+
   AllStepsExOfWorkflowEx2:StepExecution[] = [];  
   stepsFinished:StepEx[] = []; // liste de Steps qui deja executer 
   StepRuning:StepExecution;// SExecute Step qui encours d'execution
@@ -269,7 +270,7 @@ export class WorkflowExecuteComponent implements OnInit{
 }
 
             // methode pour passer a l'etape suivant
-            WorkflowExecutionTr:WorkflowExecution ; 
+            WorkflowExecutionTr:WorkflowExecution ;
             
             progresser1(){
               const estDernier = this.estDernierObjet(this.AllStepsExOfWorkflowEx2, this.StepRuning);
@@ -329,4 +330,5 @@ export class WorkflowExecuteComponent implements OnInit{
               
               
           }
+
 }

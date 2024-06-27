@@ -1,0 +1,60 @@
+<!-- <h1 class="h1">{{ StepRuning.workflowExecution.workflow.name }}</h1>
+ --><div class="blog-list">
+  <!-- Pour les steps déjà exécutés -->
+  <div *ngFor="let step of stepsFinished" class="blog-item-container">
+    <h6>{{ step.name }}</h6>
+    <span class="arrow"></span>
+  </div>
+  <!-- -------------------------------- -->
+
+  <!-- Affichage des Steps à exécuter -->
+  <div class="blog-item-containerex">
+    <h6>{{ StepRuning.step.name }}</h6>
+  </div>
+</div>
+
+<!-- *------------------------------------------------------------------------------------------------------* -->
+<!-- Pour exécuter le Step -->
+<div class="conteneur">
+  <div class="cadre gauche">
+    <h4 class="h4">{{ StepRuning.step.name }}</h4>
+
+    <div class="container">
+      <div class="pLeft">
+        <h6>Statut :{{ StepRuning.state }}</h6> 
+      </div>
+<!--       <div class="pCenter">
+        <h6>Date Début :</h6> {{ StepRuning.start_date }}
+      </div>
+      <div class="pRight">
+        <h6>Date Fin :</h6> {{ StepRuning.end_date }}
+      </div> -->
+    </div>
+
+    <!-- Pour remplir les objets de type saisir -->
+    <div class="form-container" *ngFor="let ObjSaisir of ListObjectSaisir">
+      <div class="add-user-form">
+        <h2>{{ ObjSaisir.name }} :</h2>
+        <form>
+          <div class="form-group">
+            <input type="text" id="content" name="content" [(ngModel)]="ObjSaisir.content" required />
+          </div>
+        </form>
+      </div>
+    </div>
+
+<!--     <div class="button-group">
+      <button type="button" class="blue-button" (click)="Sauv(ListObjectSaisir)">Sauvegarder</button>
+    </div> -->
+    
+
+
+
+    <!-- Bouton Progresser -->
+    <div class="button-container">
+      <button  type="button" class="button green-button" (click)="Sauv(ListObjectSaisir)">Exécuter</button>      
+      <button *ngIf="progresserButton" type="button" class="yelo-button" (click)="progresser1()">Progresser</button>
+    </div>
+  </div>
+</div>
+
