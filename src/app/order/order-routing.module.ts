@@ -18,20 +18,8 @@ import { DescriptionComponent } from './executor/description/description.compone
 import { ExecutionDetailsComponent } from './executor/execution-details/execution-details.component';
 import { ProfilComponent } from './profil/profil.component';
 import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
-import { ExecutorUserComponent } from './executor-user/executor-user.component';
-import { HomeComponent } from './executor-user/home/home.component';
-import { WorkExdetailsComponent } from './executor-user/work-exdetails/work-exdetails.component';
-import { ListWorkflowExComponent } from './executor-user/list-workflow-ex/list-workflow-ex.component';
-import { ExecutionComponent } from './executor-user/execution/execution.component';
-import { ModelerComponent } from './modeler/modeler.component';
-import { HomeModelerComponent } from './modeler/home-modeler/home-modeler.component';
-import { AddworkflowModelerComponent } from './modeler/addworkflow-modeler/addworkflow-modeler.component';
-import { ListworkflowModelerComponent } from './modeler/listworkflow-modeler/listworkflow-modeler.component';
-import { EditworkflowModelerComponent } from './modeler/editworkflow-modeler/editworkflow-modeler.component';
-import { CreatFlowModelerComponent } from './modeler/creat-flow-modeler/creat-flow-modeler.component';
-import { CreateWorkflowModelerComponent } from './modeler/creat-flow-modeler/create-workflow-modeler/create-workflow-modeler.component';
-import { StepInfoModelerComponent } from './modeler/creat-flow-modeler/step-info-modeler/step-info-modeler.component';
-import { StepsModelerComponent } from './modeler/creat-flow-modeler/steps-modeler/steps-modeler.component';
+
+
 // import { ExecutorComponent } from './executor/executor.component';
 // import { WorkflowListComponent } from './executor/workflow-list/workflow-list.component';
 // import { WorkflowExecuteComponent } from './executor/workflow-execute/workflow-execute.component';
@@ -163,78 +151,8 @@ const orderRoutes: Routes = [
         ]
     
       },
-      {
-        path: 'executorUser',
-        component: ExecutorUserComponent,
-        children:[
-          {
-            path: 'homeComponent',
-            component: HomeComponent
-          },
-          {
-            path: 'WorkExdetailsComponent/:workflowId',
-            component: WorkExdetailsComponent
-          },
-          {
-            path: 'executionComponent/:workflowExId',
-            component: ExecutionComponent
-          },          {
-            path: 'listWorkflowExComponent',
-            component: ListWorkflowExComponent
-          },
-        ]
-      },
-      {
-        path: 'modeler',
-        component: ModelerComponent,
-        children:[
-          {
-            path: 'homeModelerComponent',
-            component: HomeModelerComponent
-          }, 
-            {
-            path: 'addworkflowModelerComponent',
-            component: AddworkflowModelerComponent
-          },
-          {
-            path: 'listworkflowModelerComponent',
-            component: ListworkflowModelerComponent
-          },      
-            {
-            path: 'editworkflowModelerComponent/:workflowId',
-            component: EditworkflowModelerComponent
-          },
-          {
-            path: 'creatFlowModelerComponent/:workflowId',
-            component: CreatFlowModelerComponent,
-            children:[
-              {
-                path: 'createWorkflowModelerComponent',
-                component: CreateWorkflowModelerComponent,
-              }, 
-              {
-                path: 'stepInfoModelerComponent',
-                component: StepInfoModelerComponent,
-              }, 
-              {
-                path: 'stepsModelerComponent',
-                component: StepsModelerComponent,
-              }, 
 
-            ]
-          },
-          {
-            path:'MfeRuleModeler',
-            loadChildren:()=>{
-                return loadRemoteModule({
-                    type:'module',
-                    remoteEntry:"http://localhost:4002/remoteEntry.js",
-                    exposedModule:"./RuleModule"
-                }).then(m=>m.RuleModule).catch(e=>console.log(e));
-            }
-        },
-        ]
-      }
+
       
 
 

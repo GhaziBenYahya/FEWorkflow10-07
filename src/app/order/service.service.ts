@@ -205,6 +205,8 @@ addUser (user:User){
   return this.http.get<any>(urluser, {});
 }
 
+
+
  deleteUser (userId: any ){
   return this.http.delete(this.url+'/users/'+userId)
 }
@@ -347,6 +349,12 @@ private urlExRule = 'http://localhost:7081/api/rule';
 
 
 
+      //API Access
+
+      getAccessByUserId(userid: any){
+        const urluser = `${this.url2}/access/byUser?userId=${userid}`;
+        return this.http.get<any>(urluser, {});
+      }
 
 
 }

@@ -40,7 +40,7 @@ export class AddworkflowComponent implements OnInit{
 
       this.token = this.tokenService.getToken();
       this.srvRole.getAllRoles().subscribe((res: any) => {
-          this.roles = res;
+          this.roles = res.filter((objet: { status: any; }) => objet.status != true);;
       })
   }
 

@@ -124,46 +124,7 @@ a {
     margin-left: 59em;
 }
 
-.roles-container {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.role-checkbox {
-  flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
-  margin-right: 20px; /* Espace entre les éléments */
-  margin-bottom: 10px; /* Espacement vertical entre les lignes */
-}
-
-/* Pour s'assurer que chaque élément a une largeur égale */
-.role-checkbox input,
-.role-checkbox label {
-  width: calc(100% - 20px); /* Prend toute la largeur avec un espace de 20px */
-}
-
-
-
-.roles-container {
-  border: 1px solid #ccc; /* Ajoute un cadre autour des rôles */
-  border-radius: 4px; /* Coins arrondis */
-  padding: 10px; /* Espace intérieur */
-}
-
-.role-checkbox {
-  flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
-  margin-right: 20px; /* Espace entre les éléments */
-  margin-bottom: 10px; /* Espacement vertical entre les lignes */
-  display: flex; /* Utilise Flexbox pour aligner les cases à cocher et les étiquettes */
-  align-items: center; /* Aligne les éléments verticalement */
-}
-
-.role-checkbox input {
- margin-bottom: 0px;
-}
-
-.role-checkbox label {
-  font-size: 14px; /* Redimensionne le texte */
-}
 
 
 .title-container {
@@ -190,4 +151,60 @@ span{
 
 a {
   color: #000
+}
+
+
+
+
+
+
+/*pour les case a couche*/
+
+
+.roles-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.role-checkbox {
+  flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
+  margin-right: 20px; /* Espace entre les éléments */
+  margin-bottom: 2px; /* Espacement vertical entre les lignes */
+}
+
+/* Pour s'assurer que chaque élément a une largeur égale */
+.role-checkbox input,
+.role-checkbox label {
+  width: calc(100% - 20px); /* Prend toute la largeur avec un espace de 20px */
+  margin: 1px;
+}
+
+
+
+.roles-container {
+  border: 1px solid #ccc; /* Ajoute un cadre autour des rôles */
+  border-radius: 4px; /* Coins arrondis */
+  padding: 10px; /* Espace intérieur */
+}
+
+.role-checkbox {
+  flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
+  margin-right: 20px; /* Espace entre les éléments */
+  margin-bottom: 10px; /* Espacement vertical entre les lignes */
+  display: flex; /* Utilise Flexbox pour aligner les cases à cocher et les étiquettes */
+  align-items: center; /* Aligne les éléments verticalement */
+}
+
+/* Retirer la marge droite pour le troisième élément de chaque ligne */
+.role-checkbox:nth-child(3n) {
+  margin-right: 0;
+}
+
+.role-checkbox input {
+  transform: scale(1.5); /* Réduit la taille des cases à cocher */
+  margin-right: 2px; /* Ajoute un espace entre la case à cocher et le texte */
+}
+
+.role-checkbox label {
+  font-size: 14px; /* Redimensionne le texte */
 }

@@ -272,8 +272,8 @@ numRole :number = 1;
       console.log(`Modification du workflow avec l'ID ${id}`);
     }
   
-    
-  stepst = ['Step','Iterative', 'Conditionelle', 'Exit'];
+    //la liste de Type de etapes
+  stepst = ['Étape'];
 
   create :any = [];
   iter :any = [];
@@ -324,7 +324,7 @@ ShowStepInfoClickToAddStep(){
   
   // getAllRoles dans le systeme
   this.srvStep.getAllRoles().subscribe((res: any) => {
-  this.roles =res;
+  this.roles =res.filter((objet: { status: any; }) => objet.status != true);;
   console.log(this.Rules)
   if(this.roles.length>0){
   this.showStepInfoNoCreated=true;
@@ -338,15 +338,36 @@ this.showStepInfo=false;
 
  }
 
+
+ isRoleSelected(role: Role): boolean {
+  return !!this.listRole.find(arRole => arRole.id === role.id);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  ShowButtonAddRule:boolean=false;
 AddNewStep:Step= new Step(0,'','','false','',[],[],[],this.workflow,0);
 rankStep:number=0;
  addStepsToWorkflow(): void {
   this.AddStep.role = this.checkedRoles
+  this.AddNewStep.role = this.checkedRoles
   console.log("les Step qui vous ajouter:",this.AddNewStep)
   console.log("les id workflow.id :",this.workflow.id)
   console.log("les id workflowId 2 :",this.workflowId)
-  this.AddNewStep.role.push(1);
+  //this.AddNewStep.role.push(1);
   this.rankStep = this.create.length;
   this.AddNewStep.rank=this.create.length;
   this.AddNewStep.status ='false';
@@ -437,6 +458,85 @@ listRule:Rule[]=[]
   }
   }
 
+
+
+
+  deleteRuleOfStep(idRule:any,stepp:Step){
+    console.log("le step change:",stepp)
+    console.log("le Id Rule supprime:",idRule)
+    let listRulechange: number[] = stepp.entryRulesId.filter(nombre => nombre !== idRule);
+
+/*     console.log("aaaaaaaaa le resultat:",stepp.entryRulesId)
+
+    console.log("bbbbbbbbbbbb le resultat:",listRulechange) */
+
+    stepp.entryRulesId = listRulechange ;
+    
+    this.srvStep.editStepOfWorkflow(stepp.id, stepp)
+    .subscribe(
+      (result) => { 
+      this.ShowStepInfoClick(stepp.id);
+      Swal.fire('Valider', '', 'success')
+      
+     
+     },
+    (err) => {
+      console.log(err)
+      Swal.fire('Invalid ', '', 'error')
+    }
+    )
+
+
+
+  }
+
+
+  editStep(stepp:Step){
+    stepp.role = this.checkedRoles
+    console.log("le step change:",stepp)
+    
+    
+    this.srvStep.editStepOfWorkflow(stepp.id, stepp)
+    .subscribe(
+      (result) => { 
+      this.ngOnInit()
+      Swal.fire('Valider', '', 'success')
+      
+     
+     },
+    (err) => {
+      console.log(err)
+      Swal.fire('Invalid ', '', 'error')
+    }
+    )
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   getSteps(): Step[]{
     let steps= this.workflow.steps;
     return steps;
@@ -476,12 +576,14 @@ listRule:Rule[]=[]
 
   editStepOfWorkflow(): void {
     this.AddStep.role = this.checkedRoles
+    this.AddStep.status = 'false'
     console.log(this.AddStep , this.AddStep.id);
-    this.srvStep.editStepOfWorkflow(this.AddStep.id, this.AddStep)
+    console.log("la step a modfier :",this.AddStep)
+     this.srvStep.editStepOfWorkflow(this.AddStep.id, this.AddStep)
     .subscribe(
       (result) => { 
 
-      Swal.fire('Valider', '', 'success')
+      Swal.fire('Modification Valider', '', 'success')
       window.location.reload();
      
      },
@@ -489,7 +591,7 @@ listRule:Rule[]=[]
       console.log(err)
       Swal.fire('Invalid ', '', 'error')
     }
-    )
+    ) 
   }
 
 
@@ -525,11 +627,15 @@ listRule:Rule[]=[]
             // send ID Rule with localStorge to WorkflowFrontEnd
             const IdWorkflow = this.workflowId.toString() ;
             const IdStep = this.AddStep.id.toString() ;
+            const NameStep = this.AddStep.name ;
+
 
  
             // Stockez le token dans localStorage
             localStorage.setItem('IdWorkflow', IdWorkflow);
             localStorage.setItem('IdStep', IdStep);
+            localStorage.setItem('NameStep', NameStep);
+
 
             console.log('id Workflow localStorage Workflow',localStorage);
     

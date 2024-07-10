@@ -58,30 +58,94 @@
   margin-left: 20px;
   
   }
-  
-  .start-item{
-    background-color: green; 
-    border: solid 1 rgb(121, 118, 118);
-    border-radius: 10px;
+  /*pour le start*/
+  .start-item {
+    background-color: #02e32f; /* Couleur de fond rouge professionnelle */
+    border: solid 1px #ced4da; /* Bordure gris clair subtile */
+    border-radius: 8px; /* Bordure légèrement arrondie */
     margin: 15px;
-    padding: 10px 15px;
+    padding: 12px 18px; /* Ajustement du padding pour un meilleur espacement */
+    text-align: center;
+    font-weight: bold; /* Texte en gras */
+    color: #ffffff; /* Texte blanc */
+    width: 250px; /* Largeur augmentée */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour donner de la profondeur */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce pour l'interaction */
+
+}
+
+.start-item:hover {
+    background-color: #02c028; /* Couleur de fond plus foncée au survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+  /*fin Start*/
+
+
+
+
+  
+
+  .other-item{
+    background-color: #007BFF; /* Couleur de fond bleu professionnelle */
+    border: solid 1px #ced4da; /* Bordure gris clair subtile */
+    border-radius: 8px; /* Bordure légèrement arrondie */
+    margin: 15px;
+    padding: 12px 18px; /* Ajustement du padding pour un meilleur espacement */
     text-align: center;
     font-weight: 500;
-    color: #ffff;
-    width: 120px;
+    color: #ffffff; /* Texte blanc */
+    width: 140px; /* Légère augmentation de la largeur */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour donner de la profondeur */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce pour l'interaction */
+    width: 250px; /* Largeur augmentée */
+    height: 100px auto; /* Hauteur ajoutée */
+    
   }
+  .other-item:hover {
+    background-color: #0056b3; /* Couleur de fond plus foncée au survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+.item-title {
+  font-size: 1.5em; /* Taille de police plus grande pour le titre */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.item-description {
+  font-size: 1.2em; /* Taille de police standard pour la description */
+  line-height: 1.5; /* Espacement des lignes pour une meilleure lisibilité */
+  text-align: left; /* Alignement du texte à gauche */
+  color: #e5ecec; /* Couleur gris pour le texte */
+}
+
+
+
+
+
+
+
   
-  .exit-item{
-    background-color: red;
-    border: solid 1 rgb(121, 118, 118);
-    border-radius: 10px;
-    margin: 15px;
-    padding: 10px 15px;
-    text-align: center;
-    font-weight: 500;
-    color: #ffff;
-    width: 120px;
-  }
+.exit-item {
+  background-color: #ff2200; /* Couleur de fond rouge professionnelle */
+  border: solid 1px #ced4da; /* Bordure gris clair subtile */
+  border-radius: 8px; /* Bordure légèrement arrondie */
+  margin: 15px;
+  padding: 12px 18px; /* Ajustement du padding pour un meilleur espacement */
+  text-align: center;
+  font-weight: bold; /* Texte en gras */
+  color: #ffffff; /* Texte blanc */
+  width: 250px; /* Largeur augmentée */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour donner de la profondeur */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce pour l'interaction */
+}
+
+.exit-item:hover {
+  background-color: #ce1e02; /* Couleur de fond plus foncée au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+
+
   .create-container, .condi-container {
     display: flex;
   }
@@ -102,18 +166,7 @@
   
   
   
-  .other-item{
-    background-color: blue;
-    border: solid 1 rgb(121, 118, 118);
-    border-radius: 10px;
-    margin: 15px;
-    padding: 10px 15px;
-    text-align: center;
-    font-weight: 500;
-    color: #ffff;
-    width: 120px;
-    
-  }
+
   
   .condi{
     background-color: pink;
@@ -445,15 +498,40 @@
     background-color: transparent;
    }
   
-   .steps-button {
+
+  .steps-button{
+    background-color: #007BFF; /* Couleur de fond bleu professionnelle */
+    border: solid 1px #ced4da; /* Bordure gris clair subtile */
+    border-radius: 8px; /* Bordure légèrement arrondie */
+    margin: 15px;
+    padding: 12px 18px; /* Ajustement du padding pour un meilleur espacement */
     text-align: center;
-    border-radius: 10px;
-    color: #ffffff;
-    background: #0020ff;
-    padding: 5px 9px;
-    height: 35px;
-    width: 108px;
+    font-weight: 500;
+    color: #ffffff; /* Texte blanc */
+    width: 140px; /* Légère augmentation de la largeur */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour donner de la profondeur */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce pour l'interaction */
+
+    
   }
+  .steps-button:hover {
+    background-color: #0056b3; /* Couleur de fond plus foncée au survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   .button-group {
     display: flex;
@@ -487,43 +565,52 @@
     width: 108px; 
   }
 
-  .roles-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .role-checkbox {
-    flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
-    margin-right: 20px; /* Espace entre les éléments */
-    margin-bottom: 10px; /* Espacement vertical entre les lignes */
-  }
-  
-  /* Pour s'assurer que chaque élément a une largeur égale */
-  .role-checkbox input,
-  .role-checkbox label {
-    width: calc(100% - 20px); /* Prend toute la largeur avec un espace de 20px */
-  }
-  
-  
-  
-  .roles-container {
-    border: 1px solid #ccc; /* Ajoute un cadre autour des rôles */
-    border-radius: 4px; /* Coins arrondis */
-    padding: 10px; /* Espace intérieur */
-  }
-  
-  .role-checkbox {
-    flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
-    margin-right: 20px; /* Espace entre les éléments */
-    margin-bottom: 10px; /* Espacement vertical entre les lignes */
-    display: flex; /* Utilise Flexbox pour aligner les cases à cocher et les étiquettes */
-    align-items: center; /* Aligne les éléments verticalement */
-  }
-  
-  .role-checkbox input {
-   margin-bottom: 0px;
-  }
-  
-  .role-checkbox label {
-    font-size: 14px; /* Redimensionne le texte */
-  }
+  /*pour les case a couche*/
+
+
+.roles-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.role-checkbox {
+  flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
+  margin-right: 20px; /* Espace entre les éléments */
+  margin-bottom: 2px; /* Espacement vertical entre les lignes */
+}
+
+/* Pour s'assurer que chaque élément a une largeur égale */
+.role-checkbox input,
+.role-checkbox label {
+  width: calc(100% - 20px); /* Prend toute la largeur avec un espace de 20px */
+}
+
+
+
+.roles-container {
+  border: 1px solid #ccc; /* Ajoute un cadre autour des rôles */
+  border-radius: 4px; /* Coins arrondis */
+  padding: 10px; /* Espace intérieur */
+}
+
+.role-checkbox {
+  flex: 0 0 calc(33.33% - 20px); /* Trois colonnes avec un espace de 20px entre chaque élément */
+  margin-right: 20px; /* Espace entre les éléments */
+  margin-bottom: 10px; /* Espacement vertical entre les lignes */
+  display: flex; /* Utilise Flexbox pour aligner les cases à cocher et les étiquettes */
+  align-items: center; /* Aligne les éléments verticalement */
+}
+
+/* Retirer la marge droite pour le troisième élément de chaque ligne */
+.role-checkbox:nth-child(3n) {
+  margin-right: 0;
+}
+
+.role-checkbox input {
+  transform: scale(1.5); /* Réduit la taille des cases à cocher */
+  margin-right: 2px; /* Ajoute un espace entre la case à cocher et le texte */
+}
+
+.role-checkbox label {
+  font-size: 14px; /* Redimensionne le texte */
+}

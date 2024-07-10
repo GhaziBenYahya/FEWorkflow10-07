@@ -45,7 +45,7 @@ export class EditComponent implements OnInit{
       })
 
       this.srvRole.getAllRoles().subscribe((res: any) => {
-        this.roles =res;
+        this.roles =res.filter((objet: { status: any; }) => objet.status != true);;
                     // Marquez les rôles présents dans roleAr comme sélectionnés
                     this.roles.forEach(role => {
                       if (this.roleAr.some(arRole => arRole === role.id)) {

@@ -14,9 +14,10 @@
   padding: 10px;
   border-radius: 25px; /* Ajoute des coins arrondis de 15px */
   margin-top: 40px;
+
  
-  margin-left: auto; /* Centrer horizontalement */
-  margin-right: auto; /* Centrer horizontalement */
+  margin-left: 5px ; /* Centrer horizontalement */
+  margin-right: 5px; /* Centrer horizontalement */
 
 }
 /* Style pour le composant BlogItem */
@@ -29,10 +30,12 @@
   height: 100px;
   margin-right: 20px;
   margin-bottom: 20px;
-  border: 2px solid #3b4abc;
+  border: 2px solid #007BFF;
   border-radius: 15px; /* Ajoute des coins arrondis de 15px */
-  background-color: #3b4abc;
+  background-color: #007BFF;
   color: white; /* Couleur du texte en blanc */
+  text-align: center;
+
 
 }
 /*pour le step a executer*/
@@ -47,10 +50,12 @@
   height: 100px;
   margin-right: 20px;
   margin-bottom: 20px;
-  border: 5px solid #79ec06;
+  border: 4px solid #0054ae;
   border-radius: 15px; /* Ajoute des coins arrondis de 15px */
-  background-color: #3b4abc;
+  background-color: #007BFF;
   color: rgb(255, 255, 255); /* Couleur du texte en blanc */
+  text-align: center;
+
 
 }
 /* Flèches */
@@ -59,7 +64,7 @@
   top: 5%;
   width: 27px; /* Ajustez la taille de la flèche */
   height: 90px; /* Ajustez la taille de la flèche */
-  background-color: #ecb206; /* Couleur de la flèche */
+  background-color: #0054ae; /* Couleur de la flèche */
 }
 
 .arrow:first-child {

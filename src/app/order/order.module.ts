@@ -33,22 +33,8 @@ import { ExecutionDetailsComponent } from './executor/execution-details/executio
 import { ListRoleComponent } from './list-role/list-role.component';
 import { ProfilComponent } from './profil/profil.component';
 import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
-import { ExecutorUserComponent } from './executor-user/executor-user.component';
-import { ModelerComponent } from './modeler/modeler.component';
-import { HomeComponent } from './executor-user/home/home.component';
-import { WorkExdetailsComponent } from './executor-user/work-exdetails/work-exdetails.component';
-import { ExecutionComponent } from './executor-user/execution/execution.component';
-import { ListWorkflowExComponent } from './executor-user/list-workflow-ex/list-workflow-ex.component';
-import { HomeModelerComponent } from './modeler/home-modeler/home-modeler.component';
-import { AddworkflowModelerComponent } from './modeler/addworkflow-modeler/addworkflow-modeler.component';
-import { ListworkflowModelerComponent } from './modeler/listworkflow-modeler/listworkflow-modeler.component';
-import { EditworkflowModelerComponent } from './modeler/editworkflow-modeler/editworkflow-modeler.component';
-import { CreatFlowModelerComponent } from './modeler/creat-flow-modeler/creat-flow-modeler.component';
-import { AddBranchModelerComponent } from './modeler/creat-flow-modeler/add-branch-modeler/add-branch-modeler.component';
-import { BranchModelerComponent } from './modeler/creat-flow-modeler/branch-modeler/branch-modeler.component';
-import { CreateWorkflowModelerComponent } from './modeler/creat-flow-modeler/create-workflow-modeler/create-workflow-modeler.component';
-import { StepInfoModelerComponent } from './modeler/creat-flow-modeler/step-info-modeler/step-info-modeler.component';
-import { StepsModelerComponent } from './modeler/creat-flow-modeler/steps-modeler/steps-modeler.component';
+
+
 // import { AddBranchComponent } from './create-flow/add-branch/add-branch.component';
 // import { DescriptionComponent } from './executor/description/description.component';
 // import { ExecutorComponent } from './executor/executor.component';
@@ -79,22 +65,8 @@ import { StepsModelerComponent } from './modeler/creat-flow-modeler/steps-modele
     ListRoleComponent,
     ProfilComponent,
     UpdateProfilComponent,
-    ExecutorUserComponent,
-    ModelerComponent,
-    HomeComponent,
-    WorkExdetailsComponent,
-    ExecutionComponent,
-    ListWorkflowExComponent,
-    HomeModelerComponent,
-    AddworkflowModelerComponent,
-    ListworkflowModelerComponent,
-    EditworkflowModelerComponent,
-    CreatFlowModelerComponent,
-    AddBranchModelerComponent,
-    BranchModelerComponent,
-    CreateWorkflowModelerComponent,
-    StepInfoModelerComponent,
-    StepsModelerComponent,
+
+
     // AddBranchComponent,
     // ExecutorComponent,
     // WorkflowListComponent,

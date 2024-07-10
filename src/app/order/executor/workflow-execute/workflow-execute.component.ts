@@ -163,12 +163,15 @@ export class WorkflowExecuteComponent implements OnInit{
             this.srv.editObjet(objs[i], objs[i].id).subscribe(
               (result) => {
                 console.log(result);
+                if(i== objs.length){
+                  this.executeRules();
+                }
 
 
 
 
                 // Après la sauvegarde, continuer le traitement des objets restants
-                Swal.fire('Valider', '', 'success');
+               // Swal.fire('Valider', '', 'success');
                   
             
               },
@@ -181,9 +184,9 @@ export class WorkflowExecuteComponent implements OnInit{
 
       }
 
-      if(i== objs.length){
+/*       if(i== objs.length){
         this.executeRules();
-      }
+      } */ 
 
 
  
@@ -212,8 +215,9 @@ export class WorkflowExecuteComponent implements OnInit{
           console.log("les resultat de cette regle :",res)
       
           }else {
-            let testRuslt=false;
+            testRuslt=false;
             Swal.fire('Invalid ', '', 'error');
+            break
             
           }
         } catch (error) {
@@ -225,6 +229,7 @@ export class WorkflowExecuteComponent implements OnInit{
 
       }
       if(testRuslt){
+        Swal.fire('Valider', '', 'success');
         this.progresserButton=true;
       }
   
@@ -315,8 +320,7 @@ export class WorkflowExecuteComponent implements OnInit{
                 (result) => { 
                 console.log("le step est terminer en passer a la suivant")
                 window.location.reload();
-               //this.getlistSteps(this.workflowId);
-          
+                //this.ngOnInit()          
               },
               (err) => {
                 // traitement du cas d'erreur
