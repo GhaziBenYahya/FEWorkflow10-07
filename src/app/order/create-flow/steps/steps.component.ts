@@ -220,7 +220,7 @@ numRole :number = 1;
                 (result) => { 
 
                 Swal.fire('Valider', '', 'success')
-                window.location.reload();
+                this.ngOnInit();
               
               },
               (err) => {
@@ -324,14 +324,14 @@ ShowStepInfoClickToAddStep(){
   
   // getAllRoles dans le systeme
   this.srvStep.getAllRoles().subscribe((res: any) => {
-  this.roles =res.filter((objet: { status: any; }) => objet.status != true);;
+  this.roles =res.filter((objet: { status: any; name: any }) => objet.status != true && objet.name != 'ADMIN');
   console.log(this.Rules)
   if(this.roles.length>0){
   this.showStepInfoNoCreated=true;
 this.showStepInfo=false;  
 
   //this.showStepInfo = true;
-  console.log("les roles:",this.roles)
+  console.log("les roles aaaaaaaaaaaaaa:",this.roles)
    }
               
              })
@@ -364,6 +364,7 @@ rankStep:number=0;
  addStepsToWorkflow(): void {
   this.AddStep.role = this.checkedRoles
   this.AddNewStep.role = this.checkedRoles
+  this.AddNewStep.role.push(1)
   console.log("les Step qui vous ajouter:",this.AddNewStep)
   console.log("les id workflow.id :",this.workflow.id)
   console.log("les id workflowId 2 :",this.workflowId)
@@ -381,6 +382,7 @@ rankStep:number=0;
 
             this.getWorkflowDetail();
             this.ShowButtonAddRule = true;
+            this.checkedRoles=[];
             
           },
           (error) => { 
@@ -412,6 +414,7 @@ listRule:Rule[]=[]
           this.listIdRole =this.AddStep.role
           console.log("list des rolles id ",this.listIdRole)
           this.showStepInfo = true;
+          this.showStepInfoNoCreated=false;
           this.listRole=[]
 
           //getRoles of this step
@@ -426,7 +429,7 @@ listRule:Rule[]=[]
 
           // getAllRoles dans le systeme
           this.srvStep.getAllRoles().subscribe((res: any) => {
-            this.roles =res;
+            this.roles =res.filter((objet: { status: any; name: any }) => objet.status != true && objet.name != 'ADMIN');
             
            })
            
@@ -493,15 +496,17 @@ listRule:Rule[]=[]
 
   editStep(stepp:Step){
     stepp.role = this.checkedRoles
-    console.log("le step change:",stepp)
+    stepp.role.push(1)
+    console.log("le step change cccccccccccccc:",stepp)
     
     
     this.srvStep.editStepOfWorkflow(stepp.id, stepp)
     .subscribe(
       (result) => { 
-      this.ngOnInit()
-      Swal.fire('Valider', '', 'success')
       
+      Swal.fire('Modification Valider', '', 'success')
+      this.ngOnInit()
+      this.checkedRoles=[];
      
      },
     (err) => {
@@ -699,6 +704,8 @@ listRule:Rule[]=[]
 
             fermerBlogNewStep(){
               this.showStepInfoNoCreated=false
+              this.ShowButtonAddRule = false;
+
             }
             fermerBlogInfoStep(){
               this.showStepInfo=false

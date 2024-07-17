@@ -14,6 +14,7 @@ import {StepEx} from './executor/models/stepEx'
 import { WorkflowExecution } from './executor/models/workflow-execute';
 import { InstanceStepEx } from './executor/models/InstanceStepEx';
 import { StepExecution } from './executor/models/step-execute';
+import { ChangePassword } from '../common/models/ChangePassword';
 
 @Injectable({
   providedIn: 'root'
@@ -205,6 +206,10 @@ addUser (user:User){
   return this.http.get<any>(urluser, {});
 }
 
+changePassWord(change: ChangePassword){
+  return this.http.post(this.url2+'/auth/changePassword',change) 
+}
+
 
 
  deleteUser (userId: any ){
@@ -259,7 +264,7 @@ editUser(user:User){
 /** ghazi api for executor */
 //APIRole
  // API pour récupérer tous les workflows par rôle (1)
- getAllworkflowByRole(role: number) {
+ getAllworkflowByRole(role: any) {
   return this.http.get(this.urlEx + '/workflow/role/' + role, );
 }
 

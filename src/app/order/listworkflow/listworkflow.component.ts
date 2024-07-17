@@ -8,6 +8,9 @@ import { ListRoleComponent } from '../list-role/list-role.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Role } from 'src/app/common/models/role';
 import { forkJoin } from 'rxjs';
+import { User } from 'src/app/common/models/user';
+import { Access } from 'src/app/common/models/Access';
+import { TokenService } from '../TokenService';
 
 
 @Component({
@@ -19,19 +22,73 @@ export class ListworkflowComponent implements OnInit {
   
   WorkflowDto: WorkflowDto[] = [];
   pageIndex = 1;
-  pageSize = 6;
+  pageSize = 5;
 
   filteredWorkflows: any[] = [];
   searchTerm: string = '';
 
-  constructor(private srv: ServiceService , private router: Router,private dialog: MatDialog) {}
+
+  user:User= new User('','','','','','','','','','')
+  accesses:Access[]=[]
+  userN: string | null;
+  par:any='';
+  addWorkflow:boolean=false;
+  edittWorkflow:boolean=false;
+  deleteeWorkflow:boolean=false;
+
+  constructor(private tokenService: TokenService,private srv: ServiceService , private router: Router,private dialog: MatDialog) {}
   
   ngOnInit(): void {
-    this.srv.getWorkflows().subscribe((res: any) => {
+    const token = this.tokenService.getToken();
+    const accessrole = this.tokenService.getRole();
+
+
+  console.log("aaaaaaaaaaa number Role",accessrole)
+
+
+    this.srv.getAllworkflowByRole(accessrole).subscribe((res: any) => {
       console.log(res)
       this.WorkflowDto = res.filter((workflow: { status: string; }) => workflow.status === 'false');
       this.filteredWorkflows = this.WorkflowDto
     })
+
+
+
+    //get username and access
+    const userName = this.tokenService.getUserName();
+    let userN: string=''
+    this.userN = userName
+    this.par=this.userN
+    console.log("voila le User",this.par)
+     this.srv.getUserByUserName(this.par).subscribe((res: any) => {
+      console.log(res)
+      this.user=res
+
+
+      //get Access of User
+      this.srv.getAccessByUserId(this.user.id).subscribe((res: any) => {
+        console.log("les access:",res)
+        this.accesses=res.filter((access: { code: string; }) => access.code === 'managesWorkflow');
+        //console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",this.accesses)
+
+        for(let i=0;i<this.accesses[0].subAccess.length;i++){
+          if(this.accesses[0].subAccess[i].code =="addWorkflow"){
+            this.addWorkflow=true;
+          }
+          if(this.accesses[0].subAccess[i].code =="editWorkflow"){
+            this.edittWorkflow=true;
+          }
+          if(this.accesses[0].subAccess[i].code =="deleteWorkflow"){
+            this.deleteeWorkflow=true;
+          }
+        }
+        
+
+
+      })
+
+
+    }) 
   }
 
   filterWorkflows(): void {

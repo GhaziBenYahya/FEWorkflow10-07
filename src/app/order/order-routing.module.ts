@@ -18,6 +18,7 @@ import { DescriptionComponent } from './executor/description/description.compone
 import { ExecutionDetailsComponent } from './executor/execution-details/execution-details.component';
 import { ProfilComponent } from './profil/profil.component';
 import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
+import { ChangePasswordComponent } from './profil/change-password/change-password.component';
 
 
 // import { ExecutorComponent } from './executor/executor.component';
@@ -63,6 +64,10 @@ const orderRoutes: Routes = [
             path: 'updateProfil',
             component: UpdateProfilComponent
           },
+          {
+          path: 'changePassWord/:userId',
+          component: ChangePasswordComponent
+         },
           {
             path: 'addworkflowComponent',
             component: AddworkflowComponent

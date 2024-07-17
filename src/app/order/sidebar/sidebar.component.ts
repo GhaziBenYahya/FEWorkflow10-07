@@ -32,7 +32,8 @@ export class SidebarComponent implements OnInit{
       //get Access of User
       this.srv.getAccessByUserId(this.user.id).subscribe((res: any) => {
         console.log("les access:",res)
-        this.accesses=res
+        this.accesses=res.filter((access: { type: string; }) => access.type === 'Menu');
+        console.log("les this.user.id",this.user.id)
 
 
       })

@@ -45,7 +45,7 @@ export class EditComponent implements OnInit{
       })
 
       this.srvRole.getAllRoles().subscribe((res: any) => {
-        this.roles =res.filter((objet: { status: any; }) => objet.status != true);;
+        this.roles =res.filter((objet: { status: any; }) => objet.status != true);
                     // Marquez les rôles présents dans roleAr comme sélectionnés
                     this.roles.forEach(role => {
                       if (this.roleAr.some(arRole => arRole === role.id)) {
@@ -81,7 +81,23 @@ export class EditComponent implements OnInit{
   }
 
   editWorkflow2(){
-    this.workflow.role=this.selectedRoles;
+    this.workflow.role=this.roleAr
+    //this.workflow.role=this.selectedRoles;
+    for (let num of this.selectedRoles) {
+      // Vérifier si num n'est pas déjà dans A
+      if (!this.workflow.role.includes(num)) {
+          // Ajouter num à A
+          this.workflow.role.push(num);
+      }
+
+    }
+    console.log("les role bbbbbbbbbb",this.workflow.role)
+
+  
+
+
+
+
 
     console.log("workflowedit:",this.workflow)
     this.srv.editworkflow(this.workflow , this.workflowId)
@@ -96,7 +112,7 @@ export class EditComponent implements OnInit{
       console.log(err)
       Swal.fire('Invalid ', '', 'error')
     }
-    )
+    ) 
   }
   
 }

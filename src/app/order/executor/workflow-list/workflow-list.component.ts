@@ -17,7 +17,7 @@ import { RoleEX } from '../models/roleEx';
 export class WorkflowListComponent implements OnInit{
 
   pageIndex = 1;
-  pageSize = 8;
+  pageSize = 5;
   // constructor(private srv: RuleService , private router: Router) {}
   constructor(private tokenService: TokenService, private srvRole: ServiceService, private router: Router,private dialog: MatDialog) {}
 
@@ -44,7 +44,8 @@ ngOnInit(): void {
   console.log('succes')
 /*     const token = this.tokenService.getToken();
   console.log('le token de execute est la :'+ token) */
-  this.srvRole.getAllworkflowByRole(this.numRole).subscribe((res: any) => {
+  console.log("aaaaaaaaaaa number Role",accessrole)
+  this.srvRole.getAllworkflowByRole(accessrole).subscribe((res: any) => {
 
     console.log(res)
     this.Workflow = res.filter((workflow: { status: string; }) => workflow.status === 'false');

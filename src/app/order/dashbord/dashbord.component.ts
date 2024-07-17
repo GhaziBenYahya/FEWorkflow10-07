@@ -4,6 +4,9 @@ import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
 import { WorkflowDto } from 'src/app/common/models/workflow-dto';
 import { WorkflowExecution } from '../executor/models/workflow-execute';
+import { TokenService } from '../TokenService';
+import { User } from 'src/app/common/models/user';
+import { Access } from 'src/app/common/models/Access';
 @Component({
     selector: 'app-dashbord',
     templateUrl: './dashbord.component.html',
@@ -24,13 +27,20 @@ nbWorkflowEx:any=0;
 workflowEx:WorkflowExecution[]=[]
 nbWorkflowNoEx:any=0;
 
-constructor(private srv: ServiceService , private router: Router) {}
-
+constructor(private tokenService: TokenService,private srv: ServiceService , private router: Router) {}
+user:User= new User('','','','','','','','','','')
+accesses:Access[]=[]
+userN: string | null;
+par:any='';
 
 ngOnInit(): void {
+  const roleName = this.tokenService.getRoleName();
   
 
-  // Nombre total des workflows
+
+
+
+      // Nombre total des workflows
   this.srv.getWorkflows().subscribe((res: any) => {
     console.log(res)
     this.WorkflowDto = res.filter((workflow: { status: string; }) => workflow.status === 'false');
@@ -207,6 +217,22 @@ ngOnInit(): void {
     /********************************************************************************************************** */
 
 
+  }
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 
 
 
@@ -217,4 +243,4 @@ ngOnInit(): void {
   
 
 
-}
+

@@ -4,7 +4,8 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  height: 90px;
+  height: 80px;
+  width: 100%;
 }
 
 

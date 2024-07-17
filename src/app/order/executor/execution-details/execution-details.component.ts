@@ -4,6 +4,7 @@ import { ServiceService } from '../../service.service';
 import { Workflow } from '../models/workflow';
 import { WorkflowExecution } from '../models/workflow-execute';
 import { StepEx } from '../models/stepEx';
+import { TokenService } from '../../TokenService';
 
 @Component({
   selector: 'app-execution-details',
@@ -13,7 +14,7 @@ import { StepEx } from '../models/stepEx';
 export class ExecutionDetailsComponent implements OnInit {
 
   
-  constructor(private route: ActivatedRoute ,private router:Router,private srv: ServiceService){}
+  constructor(private tokenService: TokenService,private route: ActivatedRoute ,private router:Router,private srv: ServiceService){}
   workflowId=this.route.snapshot.params['workflowId'];
   
 
@@ -23,6 +24,7 @@ export class ExecutionDetailsComponent implements OnInit {
 
   filteredWorkflows: any[] = [];
   searchTerm: string = '';
+  roleId:any
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -65,8 +67,10 @@ export class ExecutionDetailsComponent implements OnInit {
             steps:[],
             stepCount: 0 
           }
-  }
 
+          this.roleId = this.tokenService.getRole();
+
+  }
 
   filterWorkflows(): void {
     this.filteredWorkflows = this.listWorkflowEx.filter(workflow => 
@@ -90,11 +94,15 @@ export class ExecutionDetailsComponent implements OnInit {
           this.newWorkflowExecution=res;
           console.log("AddWorkflowEx +",this.newWorkflowExecution)
 
-                  //recuperation de tous les Steps avec workflowId
+
+                  //recuperation de tous les Steps avec workflowId et id role
+                  this.roleUser = this.roleId
                   let listStep2:StepEx[]=[];
-                  this.srv.getAllStepsByWorkflowIdAndRoleId(this.workflowId,this.roleUser).subscribe((res: any) => {
+                  this.srv.getAllStepsByWorkflowIdAndRoleId(this.workflowId,this.roleId).subscribe((res: any) => {
                     listStep2=res;
-                    console.log("getAllStepsByWorkflowIdAndRoleId :",this.listStep)
+                    console.log("aaaaaaaaaaaaaaaaaaaaaaaagetAllStepsByWorkflowIdAndRoleId :",this.roleUser)
+
+                    console.log("aaaaaaaaaaaaaaaaaaaaaaaagetAllStepsByWorkflowIdAndRoleId :",listStep2)
 
       
                               this.srv.AddStepsInStepsExwithIdWorkflowEx(this.newWorkflowExecution.id,this.IdUser,listStep2).subscribe((res: any) => {

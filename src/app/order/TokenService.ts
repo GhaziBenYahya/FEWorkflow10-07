@@ -17,4 +17,10 @@ export class TokenService {
     // Récupérer le User à partir du localStorage
     return localStorage.getItem('userName');
   }
+
+  getRoleName(): string | null {
+    // Récupérer le jeton à partir du localStorage
+    return localStorage.getItem('roleName');
+  }
+
 }

@@ -54,5 +54,7 @@ openEditObjetDialog(user:any): void {
 
 //*************************************************************Fin Edit User************************************************************** */
 
-
+changeMotPasse(userId:any){
+  this.router.navigate(['/mfe1/orderComponent/changePassWord/',userId]);
+}
 }

@@ -38,26 +38,25 @@
   .workflow-steps{
     display: flex;
     padding: 10px;
-    height: 100%;
+    height: 80%;
+    margin: -10px;
   }
   
-  .workflow-create{
+  .workflow-create {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
     padding: 10px;
     width: 100%;
-    height: 100vh;
+    height: 85vh;
     background-image:
-    linear-gradient(to right, rgb(232, 230, 230) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(232, 230, 230) 1px, transparent 1px);
-  background-size: 10px 10px; /* Taille des carreaux */
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px; /* Position des carreaux */
-  
-  margin-left: 20px;
-  
-  }
+        linear-gradient(to right, rgb(232, 230, 230) 1px, transparent 1px),
+        linear-gradient(to bottom, rgb(232, 230, 230) 1px, transparent 1px);
+    background-size: 10px 10px; /* Taille des carreaux */
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px; /* Position des carreaux */
+    margin-left: 20px;
+    overflow-y: auto; /* Ajout de la scrollbar verticale */
+}
   /*pour le start*/
   .start-item {
     background-color: #02e32f; /* Couleur de fond rouge professionnelle */
@@ -290,12 +289,27 @@
       padding-left: 15px;
     
     }
+
+    .buttonAddStep{
+      padding: 10px;
+      background: #6B8E23;
+      color: #fff;
+      border: none;
+      margin: 10px;
+      /* margin-top: 20px; */
+      border-radius: 7px;
+      /* padding-left: 25px; */
+      /* padding-right: 15px; */
+      font-size: bold;
+      cursor: pointer;
+    }
     
     .buttonAddRule{
       padding: 10px;
-      background: blue;
+      background: #2ecc71;
       color: #fff;
       border: none;
+      margin: 10px;
       /* margin-top: 20px; */
       border-radius: 7px;
       /* padding-left: 25px; */
@@ -306,13 +320,11 @@
 
     .buttonAddStep{
       padding: 10px;
-        background: #52c652;
+        background: #007BFF;
         color: #fff;
         border: none;
         margin-top: 20px;
-        border-radius: 20px;
-        padding-left: 25px;
-        padding-right: 15px;
+
         font-size: bold;
         cursor: pointer;
       }
@@ -321,10 +333,9 @@
         background: #f03417;
         color: #fff;
         border: none;
-        margin-top: 20px;
+
         border-radius: 8px;
-        padding-left: 40px;
-        padding-right: 40px;
+
         font-size: bold;
         /* align-content: space-between; */
         cursor: pointer;
@@ -503,12 +514,11 @@
     background-color: #007BFF; /* Couleur de fond bleu professionnelle */
     border: solid 1px #ced4da; /* Bordure gris clair subtile */
     border-radius: 8px; /* Bordure légèrement arrondie */
-    margin: 15px;
     padding: 12px 18px; /* Ajustement du padding pour un meilleur espacement */
     text-align: center;
     font-weight: 500;
     color: #ffffff; /* Texte blanc */
-    width: 140px; /* Légère augmentation de la largeur */
+    width: 140px ; /* Légère augmentation de la largeur */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour donner de la profondeur */
     transition: background-color 0.3s, box-shadow 0.3s; /* Transition douce pour l'interaction */
 
@@ -613,4 +623,11 @@
 
 .role-checkbox label {
   font-size: 14px; /* Redimensionne le texte */
+}
+
+
+
+.arrow{
+  margin-top: -15px;
+  margin-bottom: -15px;
 }

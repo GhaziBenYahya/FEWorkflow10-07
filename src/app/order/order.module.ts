@@ -33,6 +33,7 @@ import { ExecutionDetailsComponent } from './executor/execution-details/executio
 import { ListRoleComponent } from './list-role/list-role.component';
 import { ProfilComponent } from './profil/profil.component';
 import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
+import { ChangePasswordComponent } from './profil/change-password/change-password.component';
 
 
 // import { AddBranchComponent } from './create-flow/add-branch/add-branch.component';
@@ -65,6 +66,7 @@ import { UpdateProfilComponent } from './profil/update-profil/update-profil.comp
     ListRoleComponent,
     ProfilComponent,
     UpdateProfilComponent,
+    ChangePasswordComponent,
 
 
     // AddBranchComponent,

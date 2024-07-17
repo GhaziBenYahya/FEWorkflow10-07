@@ -34,6 +34,7 @@ export class WorkflowExecuteComponent implements OnInit{
     this.route.paramMap.subscribe(params => {
       this.workflowExId = params.get('workflowExId');
       this.getlistStepsEx(this.workflowExId);
+      //pour le modification: on ajoute filtre ici pour get AllStepByUserId(UserId == Role)17/07/2024
   
       
     });
@@ -69,6 +70,7 @@ export class WorkflowExecuteComponent implements OnInit{
     this.executeButton=false;
     this.progresserButton=false;
     this.srv.getAllStepExByIdWorkflowEx(workflowExId).subscribe((res: any) => {
+            //****pour le modification: on ajoute filtre ici pour get AllStepByUserId(UserId == Role)17/07/2024***
       this.stepsFinished = [];
       AllStepsExOfWorkflowEx = res;
       this.AllStepsExOfWorkflowEx2=res;
